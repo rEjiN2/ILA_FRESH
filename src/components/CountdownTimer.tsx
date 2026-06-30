@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const LAUNCH = new Date("January 1, 2026 00:00:00").getTime();
+const LAUNCH = new Date("July 7, 2026 00:00:00").getTime();
 
 function getRemaining() {
   const delta = Math.max(0, LAUNCH - Date.now());
@@ -40,7 +40,7 @@ function FlipDigit({ value }: { value: string }) {
   }, [value]);
 
   return (
-    <div className="relative w-[3.5rem] h-[4.5rem] select-none" aria-label={display}>
+    <div className="relative w-[2.25rem] h-[3rem] select-none" aria-label={display}>
       {/* Card face */}
       <div
         className={`
@@ -50,7 +50,7 @@ function FlipDigit({ value }: { value: string }) {
           transition-transform duration-[250ms] ease-in-out
           ${flipping ? "scale-y-0 opacity-0" : "scale-y-100 opacity-100"}
         `}
-        style={{ fontSize: "2.25rem", lineHeight: 1 }}
+        style={{ fontSize: "1.4rem", lineHeight: 1 }}
       >
         {display}
       </div>
@@ -59,7 +59,7 @@ function FlipDigit({ value }: { value: string }) {
       {flipping && (
         <div
           className="absolute inset-0 flex items-center justify-center bg-primary/70 rounded-lg text-on-primary font-bold tabular-nums opacity-40"
-          style={{ fontSize: "2.25rem", lineHeight: 1 }}
+          style={{ fontSize: "1.4rem", lineHeight: 1 }}
         >
           {display}
         </div>
@@ -89,18 +89,21 @@ function TimerUnit({ label, value }: { label: string; value: number }) {
 }
 
 export default function CountdownTimer() {
-  const [time, setTime] = useState(getRemaining);
+  const [time, setTime] = useState<ReturnType<typeof getRemaining> | null>(null);
 
   useEffect(() => {
+    setTime(getRemaining());
     const id = setInterval(() => setTime(getRemaining()), 1_000);
     return () => clearInterval(id);
   }, []);
+
+  const t = time ?? { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
   return (
     <div className="flex justify-center items-start gap-4 md:gap-8">
       {UNITS.map(({ key, label }, i) => (
         <div key={key} className="flex items-start gap-4 md:gap-8">
-          <TimerUnit label={label} value={time[key]} />
+          <TimerUnit label={label} value={t[key]} />
           {/* Colon separator — hidden after last unit */}
           {i < UNITS.length - 1 && (
             <div className="flex flex-col gap-3 pt-1">
