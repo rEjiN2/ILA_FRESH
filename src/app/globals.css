@@ -1,26 +1,176 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Design Tokens ─────────────────────────────────────────── */
+@theme {
+  /* Brand Colors — Material Design 3 */
+  --color-primary:                    #225023;
+  --color-on-primary:                 #ffffff;
+  --color-primary-container:          #3a6939;
+  --color-on-primary-container:       #b1e6aa;
+  --color-primary-fixed:              #bbf0b3;
+  --color-primary-fixed-dim:          #9fd499;
+  --color-on-primary-fixed:           #002204;
+  --color-on-primary-fixed-variant:   #225023;
+  --color-inverse-primary:            #9fd499;
+
+  --color-secondary:                  #53634f;
+  --color-on-secondary:               #ffffff;
+  --color-secondary-container:        #d6e8ce;
+  --color-on-secondary-container:     #596954;
+  --color-secondary-fixed:            #d6e8ce;
+  --color-secondary-fixed-dim:        #baccb3;
+  --color-on-secondary-fixed:         #111f0f;
+  --color-on-secondary-fixed-variant: #3b4b38;
+
+  --color-tertiary:                   #1e4d52;
+  --color-on-tertiary:                #ffffff;
+  --color-tertiary-container:         #38656a;
+  --color-on-tertiary-container:      #b2e0e6;
+  --color-tertiary-fixed:             #bcebf0;
+  --color-tertiary-fixed-dim:         #a0cfd4;
+  --color-on-tertiary-fixed:          #002023;
+  --color-on-tertiary-fixed-variant:  #1e4d52;
+
+  --color-surface:                    #fafaf4;
+  --color-surface-dim:                #d9dbd4;
+  --color-surface-bright:             #f9faf3;
+  --color-surface-container-lowest:   #ffffff;
+  --color-surface-container-low:      #f3f4ed;
+  --color-surface-container:          #eeeeea;
+  --color-surface-container-high:     #e7e9e2;
+  --color-surface-container-highest:  #e2e3dc;
+  --color-surface-variant:            #e2e3dc;
+  --color-surface-tint:               #3a6939;
+  --color-on-surface:                 #1a1c19;
+  --color-on-surface-variant:         #42493f;
+  --color-inverse-surface:            #2e312d;
+  --color-inverse-on-surface:         #f0f1ea;
+
+  --color-background:                 #f9faf3;
+  --color-on-background:              #191c18;
+
+  --color-outline:                    #72796f;
+  --color-outline-variant:            #c1c9bc;
+
+  --color-error:                      #ba1a1a;
+  --color-on-error:                   #ffffff;
+  --color-error-container:            #ffdad6;
+  --color-on-error-container:         #93000a;
+
+  /* Border Radius — design system scale */
+  --radius:      0.125rem;
+  --radius-lg:   0.25rem;
+  --radius-xl:   0.5rem;
+  --radius-full: 0.75rem;
+
+  /* Font family */
+  --font-sans: var(--font-space-grotesk), "Space Grotesk", system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Keyframes ─────────────────────────────────────────────── */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes pulseGlow {
+  0%, 100% { text-shadow: 0 0 10px rgba(159, 212, 153, 0.2); }
+  50%       { text-shadow: 0 0 25px rgba(159, 212, 153, 0.6); }
+}
+
+/* ─── Utility Classes ───────────────────────────────────────── */
+@layer utilities {
+  /* Typography scale — compound classes (size + leading + tracking + weight) */
+  .text-headline-display {
+    font-size: 64px;
+    line-height: 70px;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  .text-headline-lg {
+    font-size: 48px;
+    line-height: 58px;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+  }
+
+  .text-headline-lg-mobile {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 700;
+  }
+
+  .text-headline-md {
+    font-size: 32px;
+    line-height: 42px;
+    font-weight: 600;
+  }
+
+  .text-body-lg {
+    font-size: 18px;
+    line-height: 29px;
+    font-weight: 400;
+  }
+
+  .text-body-md {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+  }
+
+  .text-label-caps {
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  /* Animations */
+  .animate-hero {
+    animation: slideUpFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .countdown-pulse {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  /* Glassmorphism panel */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(193, 201, 188, 0.2);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Base ──────────────────────────────────────────────────── */
+@layer base {
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    overflow: hidden;
+    background-color: #f9faf3;
+    font-family: var(--font-sans);
+    color: var(--color-on-surface);
+  }
+
+  /* Material Symbols variable font settings */
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-hero,
+    .countdown-pulse {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+  }
 }
