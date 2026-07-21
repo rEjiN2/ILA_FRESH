@@ -63,6 +63,9 @@ export default function Navbar() {
             >
               <Icon.globe />
             </button>
+            <Link href="/login" className="icon-btn" aria-label="Account">
+              <Icon.user />
+            </Link>
             <Link href="/wishlist" className="icon-btn badged" aria-label="Wishlist">
               <Icon.heart />
               {wishlist.length > 0 && <span className="badge">{wishlist.length}</span>}
@@ -110,6 +113,10 @@ export default function Navbar() {
                 <Icon.arrow />
               </Link>
             ))}
+            <Link href="/login" onClick={() => setOpen(false)}>
+              Login / Register
+              <Icon.arrow />
+            </Link>
             <Link href="/wishlist" onClick={() => setOpen(false)}>
               Wishlist
               <Icon.arrow />
