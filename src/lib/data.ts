@@ -83,7 +83,7 @@ export const PHOTO: Record<string, string> = {
 
 export const HERO_IMG = "/ila-banner1.jpg";
 export const HERO_MINI = "/ila-banner2.jpg";
-export const BLOG_IMG = WM("Cardamom plant.jpg", 1200);
+export const BLOG_IMG = "/jornal.jpg";
 export const CAT_IMG: Record<string, string> = {
   whole: PHOTO.cardamom,
   ground: PHOTO.chilli,

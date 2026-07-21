@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Sprig from "@/components/Sprig";
 import Newsletter from "@/components/Newsletter";
 import { Eyebrow } from "@/components/ui";
 import { Icon } from "@/components/icons";
@@ -21,6 +20,10 @@ export default function About() {
             ila means <i>leaf</i>. We started with one estate&apos;s cardamom and a stubborn belief that spice
             should taste like where it came from. This is how that grew into a house.
           </p>
+          <div className="article-hero phead-banner">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/ila-story-banner.jpg" alt="The ila estate" />
+          </div>
         </div>
       </header>
 
@@ -71,6 +74,9 @@ export default function About() {
       </section>
 
       <section id="sellers" className="strip strip--sellers">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="strip-bg" src="/story-background.jpg" alt="" aria-hidden="true" />
+        <div className="strip-atmos" />
         <div className="wrap strip-inner">
           <div className="strip-copy">
             <Eyebrow>For growers & makers</Eyebrow>
@@ -100,8 +106,13 @@ export default function About() {
               <Icon.arrow />
             </Link>
           </div>
-          <div className="strip-art strip-art--right">
-            <Sprig color="rgba(231,229,219,0.45)" />
+          <div className="strip-art strip-art--right strip-cards">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="strip-card strip-card-1" src="/card1.jpg" alt="" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="strip-card strip-card-2" src="/card2.jpg" alt="" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="strip-card strip-card-3" src="/card3.jpg" alt="" />
           </div>
         </div>
       </section>

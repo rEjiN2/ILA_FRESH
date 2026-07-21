@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="wrap foot-top">
         <div className="foot-brand">
           <Link href="/" className="logo">
-            <Image src="/logo.png" alt="ILAFRESH" height={96} width={320} className="logo-img logo-img--foot" />
+            <Image src="/ila-logo.png" alt="ILAFRESH" height={96} width={320} className="logo-img logo-img--foot" />
           </Link>
           <p>Single-origin spice, milled to order and shipped close to harvest. From the Idukki hills to your kitchen.</p>
           <div className="foot-social">
