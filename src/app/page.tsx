@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import SpiceTile from "@/components/SpiceTile";
-import Sprig from "@/components/Sprig";
 import ProductCard from "@/components/ProductCard";
 import Newsletter from "@/components/Newsletter";
 import { Eyebrow, Rating } from "@/components/ui";
@@ -134,9 +133,17 @@ export default function Home() {
 
       {/* Story strip */}
       <section className="strip">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="strip-bg" src="/ila-banner3.jpg" alt="" aria-hidden="true" />
+        <div className="strip-atmos" />
         <div className="wrap strip-inner">
-          <div className="strip-art">
-            <Sprig color="rgba(231,229,219,0.5)" />
+          <div className="strip-art strip-cards">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="strip-card strip-card-1" src="/card1.jpg" alt="" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="strip-card strip-card-2" src="/card2.jpg" alt="" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="strip-card strip-card-3" src="/card3.jpg" alt="" />
           </div>
           <div className="strip-copy">
             <Eyebrow>The ila way</Eyebrow>

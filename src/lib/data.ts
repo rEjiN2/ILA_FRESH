@@ -81,8 +81,8 @@ export const PHOTO: Record<string, string> = {
   fennel: WM("Fennel-seeds.jpg"),
 };
 
-export const HERO_IMG = WM("Essence of Indian food.JPG", 1400);
-export const HERO_MINI = WM("Cardomom pods.jpg", 700);
+export const HERO_IMG = "/ila-banner1.jpg";
+export const HERO_MINI = "/ila-banner2.jpg";
 export const BLOG_IMG = WM("Cardamom plant.jpg", 1200);
 export const CAT_IMG: Record<string, string> = {
   whole: PHOTO.cardamom,
