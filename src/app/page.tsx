@@ -6,9 +6,16 @@ import ProductCard from "@/components/ProductCard";
 import Newsletter from "@/components/Newsletter";
 import { Eyebrow, Rating } from "@/components/ui";
 import { Icon } from "@/components/icons";
-import { BLOG, CATEGORIES, CAT_IMG, HERO_IMG, HERO_MINI, PRODUCTS, money } from "@/lib/data";
+import { BLOG, CAT_IMG, HERO_IMG, HERO_MINI, PRODUCTS, money } from "@/lib/data";
 
 const ORIGINS = ["Idukki", "Wayanad", "Alleppey", "Matale", "Kashmir", "Zanzibar", "Guangxi", "Gujarat"];
+
+const COLLECTIONS = [
+  { id: "whole", label: "Whole Spices", sub: "Sun-dried • Single Origin • Handpicked", icon: Icon.leaf },
+  { id: "ground", label: "Ground Spices", sub: "Finely milled • Small batches", icon: Icon.mortar },
+  { id: "blends", label: "Blends", sub: "Expertly crafted • Rich in flavor", icon: Icon.flower },
+  { id: "botanical", label: "Botanicals & Tea", sub: "Steep • Sip • Restore", icon: Icon.cup },
+];
 
 export default function Home() {
   const featured = PRODUCTS.filter((p) => p.best).slice(0, 4);
@@ -90,23 +97,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Category rail */}
-      <section className="band band--white">
+      {/* Collections */}
+      <section className="band band--cream">
         <div className="wrap section">
-          <div className="cats">
-            {CATEGORIES.map((c) => (
-              <Link key={c.id} href={`/products?cat=${c.id}`} className="cat">
-                <div className="cat-img">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={CAT_IMG[c.id]} alt={c.label} loading="lazy" />
-                </div>
-                <div className="cat-text">
-                  <span className="cat-label">{c.label}</span>
-                  <span className="cat-note">{c.note}</span>
-                </div>
-                <span className="cat-arrow">
+          <div className="sec-head sec-head--center">
+            <Eyebrow>Loved by the kitchen</Eyebrow>
+            <h2 className="sec-title">Explore Our Collections</h2>
+            <p className="coll-sub">
+              From whole spices to handcrafted blends,
+              <br />
+              every product is sourced for freshness and authenticity.
+            </p>
+          </div>
+          <div className="coll-grid">
+            {COLLECTIONS.map((c) => (
+              <Link key={c.id} href={`/products?cat=${c.id}`} className={`coll-card coll-card--${c.id}`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="coll-bg" src={CAT_IMG[c.id]} alt={c.label} loading="lazy" />
+                <div className="coll-overlay" />
+                <span className="coll-arrow">
                   <Icon.arrow />
                 </span>
+                <div className="coll-body">
+                  <span className="coll-icon">
+                    <c.icon />
+                  </span>
+                  <h3 className="coll-title">{c.label}</h3>
+                  <p className="coll-note">{c.sub}</p>
+                  <span className="coll-btn">
+                    Explore Collection <Icon.arrow />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>
