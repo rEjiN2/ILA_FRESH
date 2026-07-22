@@ -17,6 +17,13 @@ const COLLECTIONS = [
   { id: "botanical", label: "Botanicals & Tea", sub: "Steep • Sip • Restore", icon: Icon.cup },
 ];
 
+const VALUES = [
+  { n: "01", title: "Single-Origin Harvest", desc: "Handpicked from the finest growing regions for distinct aroma and flavor.", img: CAT_IMG.whole, icon: Icon.leaf },
+  { n: "02", title: "Freshly Milled", desc: "Ground in small batches only after you order — always fresh, never sitting on shelves.", img: CAT_IMG.ground, icon: Icon.mortar },
+  { n: "03", title: "Fair & Ethical Trade", desc: "We work directly with farmers and pay above-market prices for quality that lasts.", img: CAT_IMG.blends, icon: Icon.hand },
+  { n: "04", title: "Lab-Tested Purity", desc: "Every batch is tested for purity and safety. No fillers, no colors, no compromises.", img: CAT_IMG.botanical, icon: Icon.flask },
+];
+
 export default function Home() {
   const featured = PRODUCTS.filter((p) => p.best).slice(0, 4);
   const hero = PRODUCTS[0];
@@ -189,19 +196,28 @@ export default function Home() {
       </section>
 
       {/* Values */}
-      <section className="band band--white">
+      <section className="band band--cream">
         <div className="wrap section">
           <div className="values">
-            {[
-              ["Single origin, named", "Every jar tells you the exact region it grew in — not just a country."],
-              ["Milled to order", "Ground spices are milled the week they ship, then dated on the label."],
-              ["Fair at the farm gate", "We buy direct and pay above market, so quality is worth growing."],
-              ["Lab-tested purity", "No fillers, no dyes, no anti-caking agents. One ingredient, checked."],
-            ].map(([t, d], i) => (
-              <div key={i} className="value">
-                <span className="value-no">{String(i + 1).padStart(2, "0")}</span>
-                <h3>{t}</h3>
-                <p>{d}</p>
+            {VALUES.map((v) => (
+              <div key={v.n} className="value">
+                <div className="value-photo">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={v.img} alt="" loading="lazy" />
+                </div>
+                <span className="value-icon-wrap">
+                  <span className="value-icon">
+                    <v.icon />
+                  </span>
+                </span>
+                <div className="value-body">
+                  <span className="value-no">{v.n}</span>
+                  <h3>{v.title}</h3>
+                  <p>{v.desc}</p>
+                  <Link href="/about" className="value-link">
+                    Learn more <Icon.arrow />
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
